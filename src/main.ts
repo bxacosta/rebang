@@ -1,10 +1,17 @@
 import {bangs} from "./bang";
 import "./global.css";
+import {getTheme, THEME_META, toggleTheme} from "./theme.ts";
 
 function noSearchDefaultPageRender() {
+    const theme = getTheme();
     const app = document.querySelector<HTMLDivElement>("#app")!;
+
     app.innerHTML = `
       <main class="main-container">
+        <button id="theme-toggle" type="button" title="${THEME_META[theme].message}" class="icon-button" 
+          aria-label="Toggle dark mode">
+          <img src="${THEME_META[theme].icon}" alt="${THEME_META[theme].message}" />
+        </button>
         <section class="content-container">
           <h1>Und*ck</h1>
           <p>
@@ -29,6 +36,8 @@ function noSearchDefaultPageRender() {
     `;
 
     const copyButton = app.querySelector<HTMLButtonElement>("#copy-button")!;
+    const themeToggle = app.querySelector<HTMLButtonElement>("#theme-toggle")!;
+
     const copyIcon = copyButton.querySelector("img")!;
     const urlInput = app.querySelector<HTMLInputElement>(".url-input")!;
 
@@ -40,6 +49,8 @@ function noSearchDefaultPageRender() {
             copyIcon.src = "/clipboard.svg";
         }, 2000);
     });
+
+    themeToggle.addEventListener("click", () => toggleTheme(themeToggle));
 }
 
 const LS_DEFAULT_BANG = localStorage.getItem("default-bang") ?? "g";
@@ -62,7 +73,7 @@ function getBangRedirectUrl() {
     // Remove the first bang from the query
     const cleanQuery = query.replace(/!\S+\s*/i, "").trim();
 
-    // Format of the url is:
+    // The format of the url is:
     // https://www.google.com/search?q={{{s}}}
     const searchUrl = selectedBang?.url.replace(
         "{{{s}}}",

@@ -11,6 +11,20 @@
     --filter: invert(0);
 }
 
+:root[data-theme="dark"] {
+    --bg: #0e1217;
+    --text: #f1f1f1;
+    --link: #cccccc;
+    --link-hover: #ffffff;
+    --input-bg: #1c1f26;
+    --border: #2d323b;
+    --muted: #aaaaaa;
+    --button-hover: #2d313b;
+    --button-active: #2d323b;
+    --filter: invert(90%);
+}
+
+
 body {
     width: 100%;
     height: 100%;
@@ -58,7 +72,7 @@ input {
 }
 
 button {
-    padding: 8px;
+    padding: 10px;
     border-radius: 4px;
     color: #666;
     background: none;
@@ -112,6 +126,17 @@ button {
         width: 20px;
         height: 20px;
         filter: var(--filter);
+    }
+}
+
+#theme-toggle {
+    top: 16px;
+    right: 20px;
+    position: fixed;
+
+    img {
+        width: 24px;
+        height: 24px;
     }
 }
 
