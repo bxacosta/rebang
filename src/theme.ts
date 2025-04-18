@@ -9,11 +9,11 @@ const THEME_KEY = 'theme';
 
 const THEME_META: Record<Theme, ToggleConfig> = {
     light: {
-        icon: '/sun.svg',
+        icon: '/moon.svg',
         message: 'Switch to dark mode'
     },
     dark: {
-        icon: '/moon.svg',
+        icon: '/sun.svg',
         message: 'Switch to light mode'
     },
 }
@@ -47,6 +47,7 @@ function toggleTheme(button: HTMLButtonElement) {
 
     if (!button) return;
 
+    button.title = THEME_META[newTheme].message;
     button.innerHTML = `<img src="${THEME_META[newTheme].icon}" alt="${THEME_META[newTheme].message}" />`;
 }
 
