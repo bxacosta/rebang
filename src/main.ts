@@ -19,7 +19,7 @@ function noSearchDefaultPageRender() {
             <a href="https://duckduckgo.com/bang.html" target="_blank">all of DuckDuckGo's bangs.</a>
           </p>
           <div class="url-container">
-            <input type="text" class="url-input" value="https://unduck.link?q=%s" readonly/>
+            <input type="text" class="url-input" value="${window.location.origin}" readonly/>
             <button id="copy-button" class="icon-button" aria-label="Copy URL">
               <img src="/clipboard.svg" alt="Copy" />
             </button>
@@ -72,6 +72,10 @@ function getBangRedirectUrl() {
 
     // Remove the first bang from the query
     const cleanQuery = query.replace(/!\S+\s*/i, "").trim();
+
+    // If the query is just the !bang, redirect to base domain
+    if (cleanQuery === "")
+        return selectedBang ? `https://${selectedBang.domain}` : null;
 
     // The format of the url is:
     // https://www.google.com/search?q={{{s}}}
