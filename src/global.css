@@ -91,8 +91,18 @@ button {
     }
 }
 
+input {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    width: 100%;
+    background: var(--input-bg);
+    color: var(--text);
+    transition: border-color 0.2s, background 0.2s;
+}
+
 /* Content */
-.main-container {
+.container {
     min-height: 100vh;
     display: grid;
     place-items: center;
@@ -101,7 +111,7 @@ button {
 .content-container {
     max-width: 36rem;
     text-align: center;
-    padding: 0 8px;
+    padding: 0 1rem 10rem;
 }
 
 .url-container {
@@ -109,16 +119,16 @@ button {
     align-items: center;
     gap: 8px;
     margin-top: 16px;
+    position: relative;
 
-    .url-input {
-        padding: 8px 12px;
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        width: 100%;
-        background: var(--input-bg);
-        color: var(--text);
-        transition: border-color 0.2s, background 0.2s;
+    .icon-button {
+        position: absolute;
+        right: 0;
     }
+}
+
+.test-container {
+    margin-top: 2rem;
 }
 
 /* Buttons */

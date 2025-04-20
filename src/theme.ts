@@ -6,8 +6,9 @@ type ToggleConfig = {
 }
 
 const THEME_KEY = 'theme';
+const TOGGLE_BUTTON_ID = 'theme-toggle';
 
-const THEME_META: Record<Theme, ToggleConfig> = {
+const TOGGLE_META: Record<Theme, ToggleConfig> = {
     light: {
         icon: '/moon.svg',
         message: 'Switch to dark mode'
@@ -40,6 +41,19 @@ function setTheme(theme: Theme) {
     localStorage.setItem(THEME_KEY, theme);
 }
 
+function setButtonProps(button: HTMLButtonElement, theme: Theme) {
+    const message = TOGGLE_META[theme].message;
+    const icon = TOGGLE_META[theme].icon;
+
+    const iconImage = button.querySelector<HTMLImageElement>("img")!;
+
+    button.title = message;
+    button.ariaLabel = message;
+
+    iconImage.src = icon;
+    iconImage.alt = message;
+}
+
 function toggleTheme(button: HTMLButtonElement) {
     const currentTheme = getTheme();
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -47,10 +61,19 @@ function toggleTheme(button: HTMLButtonElement) {
 
     if (!button) return;
 
-    button.title = THEME_META[newTheme].message;
-    button.innerHTML = `<img src="${THEME_META[newTheme].icon}" alt="${THEME_META[newTheme].message}" />`;
+    setButtonProps(button, newTheme);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleButton = document.getElementById(TOGGLE_BUTTON_ID)! as HTMLButtonElement;
+
+    themeToggleButton.addEventListener("click", () => toggleTheme(themeToggleButton));
+
+    const theme = getTheme();
+    setButtonProps(themeToggleButton, theme);
+});
+
 
 setTheme(getTheme());
 
-export {getTheme, toggleTheme, THEME_META};
+export {getTheme, toggleTheme, TOGGLE_META};
