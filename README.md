@@ -1,10 +1,10 @@
-# Unduck
+# Rebang
 
-A local first implementation of [DuckDuckGo's bang](https://duckduckgo.com/bangs) redirects.
+A local-first implementation of [DuckDuckGo's bang](https://duckduckgo.com/bangs) redirects.
 
 ## How it works
 
-DuckDuckGo performs redirects server-side, which can be slow due to DNS issues. Unduck solves this by:
+DuckDuckGo performs redirects server-side, which can be slow due to DNS issues. Rebang solves this by:
 
 - Processing all redirects client-side
 - Caching JavaScript after first visit
@@ -12,11 +12,11 @@ DuckDuckGo performs redirects server-side, which can be slow due to DNS issues. 
 
 ## Browser Setup
 
-To use Unduck, you need to set it as your default search engine in your browser. Use the following URL as your search
+To use Rebang, you need to set it as your default search engine in your browser. Use the following URL as your search
 engine:
 
 ```
-https://unduck.iambx.xyz?q=%s
+https://rebang.iambx.xyz?q=%s
 ```
 
 For specific browser configuration instructions, refer to these guides:
@@ -37,11 +37,8 @@ npm install
 
 # Start development server
 npm run dev
-
-# Build for production
-npm run build
 ```
 
 ## Credits
 
-This is my personal customization of the [Theo's unduck project](https://github.com/t3dotgg/unduck).
+This is my personal customization of [Theo's unduck project](https://github.com/t3dotgg/unduck).
