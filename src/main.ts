@@ -22,7 +22,7 @@ function noSearchDefaultPageRender() {
           
           <form class="test-container">
             <p>Test</p>
-            <input name="q" type="text" placeholder="javascript !yt" role="searchbox"/>
+            <input id="test-input" name="q" type="text" role="searchbox"/>
           </form>
         </main>
         <footer class="footer">
@@ -46,6 +46,15 @@ function noSearchDefaultPageRender() {
             iconImage.src = "/clipboard.svg";
         }, 2000);
     });
+
+    const testInput = app.querySelector<HTMLInputElement>("#test-input")!;
+    const testExamples = ["hello world !gtes", "react course !yt", "bxacosta/rebang !ghr", "typescript !g"]
+    testInput.placeholder = testExamples[0];
+    let counter = 0;
+    setInterval(() => {
+        counter++;
+        testInput.placeholder = testExamples[counter % testExamples.length];
+    }, 3000);
 }
 
 function getBangRedirectUrl() {
