@@ -1,13 +1,47 @@
 # Unduck
 
-DuckDuckGo's bang redirects are too slow. Add the following URL as a custom search engine to your browser. Enables all of DuckDuckGo's bangs to work, but much faster.
+A local first implementation of [DuckDuckGo's bang](https://duckduckgo.com/bangs) redirects.
+
+## How it works
+
+DuckDuckGo performs redirects server-side, which can be slow due to DNS issues. Unduck solves this by:
+
+- Processing all redirects client-side
+- Caching JavaScript after first visit
+- Eliminating server dependency for redirects
+
+## Browser Setup
+
+To use Unduck, you need to set it as your default search engine in your browser. Use the following URL as your search
+engine:
 
 ```
-https://unduck.link?q=%s
+https://unduck.iambx.xyz?q=%s
 ```
 
-## How is it that much faster?
+For specific browser configuration instructions, refer to these guides:
 
-DuckDuckGo does their redirects server side. Their DNS is...not always great. Result is that it often takes ages.
+- **Chrome**: [Set your default search engine in Chrome](https://support.google.com/chrome/answer/95426)
+- **Firefox**: [Change your default search settings in Firefox](https://support.mozilla.org/en-US/kb/change-your-default-search-settings-firefox)
+- **Edge**: [Change your default search engine in Microsoft Edge](https://support.microsoft.com/en-us/microsoft-edge/change-your-default-search-engine-in-microsoft-edge-cccaf51c-a4df-a43e-8036-d4d2c527a791)
+- **Brave**: [How do I set my default search engine?](https://support.brave.com/hc/en-us/articles/360017479752-How-do-I-set-my-default-search-engine)
 
-I solved this by doing all of the work client side. Once you've went to https://unduck.link once, the JS is all cache'd and will never need to be downloaded again. Your device does the redirects, not me.
+
+## Development
+
+To run this project, you need **Node.js version 22 or higher**.
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## Credits
+
+This is my personal customization of the [Theo's unduck project](https://github.com/t3dotgg/unduck).
