@@ -13,7 +13,7 @@ function noSearchDefaultPageRender() {
           <img src="${THEME_META[theme].icon}" alt="${THEME_META[theme].message}" />
         </button>
         <section class="content-container">
-          <h1>Und*ck</h1>
+          <h1>Rebang</h1>
           <p>
             DuckDuckGo's bang redirects are too slow. Add the following URL as a custom search engine to your browser. Enables
             <a href="https://duckduckgo.com/bang.html" target="_blank">all of DuckDuckGo's bangs.</a>
