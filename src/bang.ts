@@ -58,4 +58,12 @@ export const bangs: Bang[] = [
         subCategory: "Programming",
         url: "https://github.com/{{{s}}}",
     },
+    {
+        title: "GitHub",
+        trigger: "gh",
+        domain: "github.com",
+        category: "Development",
+        subCategory: "Programming",
+        url: "https://github.com/search?q={{{s}}}"
+    }
 ]
