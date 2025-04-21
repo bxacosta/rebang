@@ -1,12 +1,15 @@
 import {bangs} from "./bang";
 import "./global.css";
+import {handleThemeToggleButton} from "./theme.ts";
 
 function noSearchDefaultPageRender() {
     const app = document.querySelector<HTMLDivElement>("#app")!;
 
     app.innerHTML = `
       <div class="container">
-        <button id="theme-toggle" type="button" class="icon-button"></button>
+        <button id="theme-toggle" type="button" class="icon-button">
+          <img src="" alt="">
+        </button>
         <main class="content-container">
           <h1>Rebang</h1>
           <p>
@@ -33,27 +36,37 @@ function noSearchDefaultPageRender() {
       </div>
     `;
 
+    const testInput = app.querySelector<HTMLInputElement>("#test-input")!;
+    handleTestInput(testInput);
+
+    const themeToggleButton = app.querySelector<HTMLButtonElement>("#theme-toggle")!;
+    handleThemeToggleButton(themeToggleButton);
+
     const copyButton = app.querySelector<HTMLButtonElement>("#copy-button")!;
     const urlInput = app.querySelector<HTMLInputElement>("#url-input")!;
+    handleCopyURLButton(copyButton, urlInput);
+}
 
-    copyButton.addEventListener("click", async () => {
-        await navigator.clipboard.writeText(urlInput.value);
+function handleCopyURLButton(button: HTMLButtonElement, input: HTMLInputElement) {
+    button.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(input.value);
 
-        const iconImage = copyButton.querySelector<HTMLImageElement>("img")!;
+        const iconImage = button.querySelector<HTMLImageElement>("img")!;
 
         iconImage.src = "/clipboard-check.svg";
         setTimeout(() => {
             iconImage.src = "/clipboard.svg";
         }, 2000);
     });
+}
 
-    const testInput = app.querySelector<HTMLInputElement>("#test-input")!;
+function handleTestInput(input: HTMLInputElement) {
     const testExamples = ["hello world !gtes", "react course !yt", "bxacosta/rebang !ghr", "typescript !g"]
-    testInput.placeholder = testExamples[0];
+    input.placeholder = testExamples[0];
     let counter = 0;
     setInterval(() => {
         counter++;
-        testInput.placeholder = testExamples[counter % testExamples.length];
+        input.placeholder = testExamples[counter % testExamples.length];
     }, 3000);
 }
 

@@ -6,7 +6,6 @@ type ToggleConfig = {
 }
 
 const THEME_KEY = 'theme';
-const TOGGLE_BUTTON_ID = 'theme-toggle';
 
 const TOGGLE_META: Record<Theme, ToggleConfig> = {
     light: {
@@ -64,16 +63,11 @@ function toggleTheme(button: HTMLButtonElement) {
     setButtonProps(button, newTheme);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleButton = document.getElementById(TOGGLE_BUTTON_ID)! as HTMLButtonElement;
-
-    themeToggleButton.addEventListener("click", () => toggleTheme(themeToggleButton));
-
-    const theme = getTheme();
-    setButtonProps(themeToggleButton, theme);
-});
-
+function handleThemeToggleButton(button: HTMLButtonElement) {
+    button.addEventListener("click", () => toggleTheme(button));
+    setButtonProps(button, getTheme());
+}
 
 setTheme(getTheme());
 
-export {getTheme, toggleTheme, TOGGLE_META};
+export {handleThemeToggleButton};
