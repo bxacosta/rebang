@@ -1,5 +1,4 @@
 import {bangs} from "./bang";
-import "./global.css";
 import {handleThemeToggleButton} from "./theme.ts";
 
 function noSearchDefaultPageRender() {

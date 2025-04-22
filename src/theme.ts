@@ -30,9 +30,7 @@ function getTheme(): Theme {
 
     if (theme) return theme;
 
-    theme = getSystemTheme();
-
-    return theme;
+    return getSystemTheme();
 }
 
 function setTheme(theme: Theme) {

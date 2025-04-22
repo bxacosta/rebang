@@ -6,6 +6,12 @@
     <meta name="description" content="A better default search engine (with bangs!)"/>
 
     <link rel="icon" type="image/svg+xml" href="/search.svg"/>
+    <link rel="stylesheet" href="src/global.css">
+
+    <script>
+        const theme = localStorage.getItem('theme');
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
 
     <!-- Apply theme as early as possible -->
     <script type="module" src="/src/theme.ts"></script>
